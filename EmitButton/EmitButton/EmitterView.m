@@ -8,9 +8,15 @@
 
 #import "EmitterView.h"
 
+#define kEmitterAnimationKey  @"emitterPositionAnimation"
+#define kFloatingAnimationKey @"floatingPositionAnimation"
+
 @interface EmitterView()<CAAnimationDelegate>
 @property (nonatomic,strong) UIImage *defaultImage;
 @property (nonatomic,strong) UIImage *iconImage;
+
+@property (nonatomic,weak)   UIView  *inView;
+@property (nonatomic,assign) CGPoint emitterEndPoint;
 @end
 
 @implementation EmitterView
@@ -24,9 +30,8 @@
     return self;
 }
 
-- (void)animateInView:(UIView *)view{
-    
-    //Pre-Animation setup
+- (void)animateInView:(UIView *)view
+{
     self.transform = CGAffineTransformMakeScale(0, 0);
     self.alpha = 0;
     
@@ -41,10 +46,7 @@
                      animations:^{
         self.transform = CGAffineTransformIdentity;
         self.alpha = 0.9;
-                         
-                         
     } completion:NULL];
-
 
     [self emitterAnimation:view];
 }
@@ -64,27 +66,27 @@
     [path moveToPoint:self.center];
     CGPoint endPoint = CGPointMake(viewCenterX + (rotationDirection) * arc4random_uniform(2*viewSize),
                                    viewHeight/5 * 4 - arc4random_uniform(viewHeight/15.0));
-    
     [path addLineToPoint:endPoint];
+    self.emitterEndPoint = endPoint;
+    self.inView = view;
     
     CAKeyframeAnimation *emitterAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     emitterAnimation.path           = path.CGPath;
     emitterAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
     emitterAnimation.duration       = 1;
     emitterAnimation.delegate       = self;
-    [self.layer addAnimation:emitterAnimation forKey:@"positionOnPath"];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self lineDismissAnimation];
-    });
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self floatingAnimation:view starPoint:endPoint];
-    });
+    emitterAnimation.removedOnCompletion = NO;
+    [self.layer addAnimation:emitterAnimation forKey:kEmitterAnimationKey];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    self.image = self.defaultImage;
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if([self.layer animationForKey:kEmitterAnimationKey] == anim)
+    {
+        [self lineDismissAnimation];
+        [self floatingAnimation:self.inView starPoint:self.emitterEndPoint];
+        self.image = self.defaultImage;
+    }
 }
 
 - (void)lineDismissAnimation
@@ -138,12 +140,12 @@
 - (void)floatingAnimation:(UIView *)view starPoint:(CGPoint)starPoint
 {
     NSTimeInterval totalAnimationDuration = 3;
-    CGFloat viewSize = CGRectGetWidth(self.bounds);
-    CGFloat viewCenterX = self.center.x;
-    CGFloat viewHeight = CGRectGetHeight(view.bounds);
+    CGFloat viewWidth   = CGRectGetWidth(self.bounds);
+    CGFloat viewHeight  = CGRectGetHeight(view.bounds);
+//    CGFloat viewCenterX = self.center.x;
     
     NSInteger i = arc4random_uniform(2);
-    NSInteger rotationDirection = 1 - (2*i);// -1 OR 1
+    NSInteger rotationDirection = 1 - ( 2 * i);
     NSInteger rotationFraction  = arc4random_uniform(10);
     [UIView animateWithDuration:totalAnimationDuration animations:^{
         self.transform = CGAffineTransformMakeRotation(rotationDirection * M_PI/(16 + rotationFraction*0.2));
@@ -151,17 +153,25 @@
     
     UIBezierPath *travelPath = [UIBezierPath bezierPath];
     [travelPath moveToPoint:starPoint];
-    
-    CGPoint endPoint = CGPointMake(viewCenterX + (rotationDirection) * arc4random_uniform(2*viewSize), viewHeight/6.0 + arc4random_uniform(viewHeight/4.0));
-    
+
     NSInteger j = arc4random_uniform(2);
-    NSInteger travelDirection = 1 - (2*j);// -1 OR 1
+    NSInteger travelDirection = 1 - ( 2 * j);
     
-    //三节贝塞尔曲线
-    CGFloat xDelta = (viewSize/2.0 + arc4random_uniform(2 * viewSize)) * travelDirection;
-    CGFloat yDelta = MAX(endPoint.y ,MAX(arc4random_uniform(8 * viewSize), viewSize));
-    CGPoint controlPoint1 = CGPointMake(viewCenterX + xDelta, viewHeight - yDelta);
-    CGPoint controlPoint2 = CGPointMake(viewCenterX - 2*xDelta, yDelta);
+//    //纵向移动
+//    CGPoint endPoint = CGPointMake(viewCenterX + (rotationDirection) * arc4random_uniform(2 * viewWidth),
+//                                   viewHeight/6.0 + arc4random_uniform(viewHeight/4.0));
+//    CGFloat xDelta = (viewWidth/2.0 + arc4random_uniform(2 * viewWidth)) * travelDirection;
+//    CGFloat yDelta = MAX(endPoint.y ,MAX(arc4random_uniform(8 * viewWidth), viewWidth));
+//    CGPoint controlPoint1 = CGPointMake(viewCenterX + xDelta, viewHeight - yDelta);
+//    CGPoint controlPoint2 = CGPointMake(viewCenterX - 2*xDelta, yDelta);
+    
+    //横向移动
+    CGPoint endPoint = CGPointMake(starPoint.x + viewWidth,
+                                   starPoint.y - arc4random_uniform(starPoint.y / 4.0));
+    CGFloat xDelta = (viewWidth / 2.0 + arc4random_uniform(2 * viewWidth)) * travelDirection;
+    CGFloat yDelta = MAX(endPoint.y ,MAX(arc4random_uniform(8 * viewWidth), viewWidth));
+    CGPoint controlPoint1 = CGPointMake(starPoint.y + xDelta, viewHeight - yDelta);
+    CGPoint controlPoint2 = CGPointMake(starPoint.y - 2*xDelta, yDelta);
     
     [travelPath addCurveToPoint:endPoint
                   controlPoint1:controlPoint1
@@ -171,15 +181,13 @@
     keyFrameAnimation.path = travelPath.CGPath;
     keyFrameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     keyFrameAnimation.duration = totalAnimationDuration + endPoint.y/viewHeight;
-    [self.layer addAnimation:keyFrameAnimation forKey:@"positionOnPath"];
+    [self.layer addAnimation:keyFrameAnimation forKey:kFloatingAnimationKey];
     
-    //Alpha & remove from superview
     [UIView animateWithDuration:totalAnimationDuration animations:^{
         self.alpha = 0.0;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
-
 }
 
 
