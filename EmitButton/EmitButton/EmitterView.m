@@ -140,8 +140,8 @@
 - (void)floatingAnimation:(UIView *)view starPoint:(CGPoint)starPoint
 {
     NSTimeInterval totalAnimationDuration = 3;
-    CGFloat viewWidth   = CGRectGetWidth(self.bounds);
-    CGFloat viewHeight  = CGRectGetHeight(view.bounds);
+    CGFloat viewWidth   = CGRectGetWidth(view.bounds);
+//    CGFloat viewHeight  = CGRectGetHeight(view.bounds);
 //    CGFloat viewCenterX = self.center.x;
     
     NSInteger i = arc4random_uniform(2);
@@ -154,8 +154,8 @@
     UIBezierPath *travelPath = [UIBezierPath bezierPath];
     [travelPath moveToPoint:starPoint];
 
-    NSInteger j = arc4random_uniform(2);
-    NSInteger travelDirection = 1 - ( 2 * j);
+//    NSInteger j = arc4random_uniform(2);
+//    NSInteger travelDirection = 1 - (2 * j);
     
 //    //纵向移动
 //    CGPoint endPoint = CGPointMake(viewCenterX + (rotationDirection) * arc4random_uniform(2 * viewWidth),
@@ -166,12 +166,12 @@
 //    CGPoint controlPoint2 = CGPointMake(viewCenterX - 2*xDelta, yDelta);
     
     //横向移动
-    CGPoint endPoint = CGPointMake(starPoint.x + viewWidth,
-                                   starPoint.y - arc4random_uniform(starPoint.y / 4.0));
-    CGFloat xDelta = (viewWidth / 2.0 + arc4random_uniform(2 * viewWidth)) * travelDirection;
-    CGFloat yDelta = MAX(endPoint.y ,MAX(arc4random_uniform(8 * viewWidth), viewWidth));
-    CGPoint controlPoint1 = CGPointMake(starPoint.y + xDelta, viewHeight - yDelta);
-    CGPoint controlPoint2 = CGPointMake(starPoint.y - 2*xDelta, yDelta);
+    NSInteger travelDirection = 1;
+    CGPoint endPoint = CGPointMake(starPoint.x + viewWidth, starPoint.y);
+    CGFloat xDelta = ([self getRandomNumber:viewWidth/2 to:viewWidth]) * travelDirection;
+    CGFloat yDelta = [self getRandomNumber:starPoint.y + 30 to:starPoint.y + 130];
+    CGPoint controlPoint1 = CGPointMake(xDelta , yDelta);
+    CGPoint controlPoint2 = CGPointMake(xDelta * 2, 0.9 * yDelta);
     
     [travelPath addCurveToPoint:endPoint
                   controlPoint1:controlPoint1
@@ -180,7 +180,7 @@
     CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     keyFrameAnimation.path = travelPath.CGPath;
     keyFrameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    keyFrameAnimation.duration = totalAnimationDuration + endPoint.y/viewHeight;
+    keyFrameAnimation.duration = totalAnimationDuration + endPoint.x/viewWidth;
     [self.layer addAnimation:keyFrameAnimation forKey:kFloatingAnimationKey];
     
     [UIView animateWithDuration:totalAnimationDuration animations:^{
@@ -189,6 +189,9 @@
         [self removeFromSuperview];
     }];
 }
-
+-(int)getRandomNumber:(int)from to:(int)to
+{
+    return (int)(from + (arc4random() % (to - from + 1)));
+}
 
 @end
