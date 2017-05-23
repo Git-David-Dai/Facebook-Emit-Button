@@ -15,6 +15,7 @@
 		630387F61ED3FB9B00C9631B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 630387F41ED3FB9B00C9631B /* LaunchScreen.storyboard */; };
 		630388011ED3FB9C00C9631B /* EmitButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 630388001ED3FB9C00C9631B /* EmitButtonTests.m */; };
 		6303880C1ED3FB9C00C9631B /* EmitButtonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6303880B1ED3FB9C00C9631B /* EmitButtonUITests.m */; };
+		6303881E1ED4067500C9631B /* EmitterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6303881D1ED4067500C9631B /* EmitterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		630388071ED3FB9C00C9631B /* EmitButtonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmitButtonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6303880B1ED3FB9C00C9631B /* EmitButtonUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmitButtonUITests.m; sourceTree = "<group>"; };
 		6303880D1ED3FB9C00C9631B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6303881C1ED4067500C9631B /* EmitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmitterView.h; sourceTree = "<group>"; };
+		6303881D1ED4067500C9631B /* EmitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmitterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				630387F41ED3FB9B00C9631B /* LaunchScreen.storyboard */,
 				630387F71ED3FB9B00C9631B /* Info.plist */,
 				630387E61ED3FB9B00C9631B /* Supporting Files */,
+				6303881C1ED4067500C9631B /* EmitterView.h */,
+				6303881D1ED4067500C9631B /* EmitterView.m */,
 			);
 			path = EmitButton;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				630387EE1ED3FB9B00C9631B /* ViewController.m in Sources */,
+				6303881E1ED4067500C9631B /* EmitterView.m in Sources */,
 				630387EB1ED3FB9B00C9631B /* AppDelegate.m in Sources */,
 				630387E81ED3FB9B00C9631B /* main.m in Sources */,
 			);
@@ -507,6 +513,7 @@
 				630388121ED3FB9C00C9631B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		630388131ED3FB9C00C9631B /* Build configuration list for PBXNativeTarget "EmitButtonTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +522,7 @@
 				630388151ED3FB9C00C9631B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		630388161ED3FB9C00C9631B /* Build configuration list for PBXNativeTarget "EmitButtonUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +531,7 @@
 				630388181ED3FB9C00C9631B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

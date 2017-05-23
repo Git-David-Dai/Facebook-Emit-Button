@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "EmitterView.h"
 @interface ViewController ()
 
 @end
@@ -16,13 +16,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showEmitterView)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)showEmitterView
+{
+    EmitterView* heart = [[EmitterView alloc] initWithDefaultImage:[UIImage imageNamed:@"like"]
+                                                         iconImage:[UIImage imageNamed:@"love"]];
+    heart.frame = CGRectMake(0, 0, 36, 36);
+    [self.view addSubview:heart];
+    CGPoint fountainSource = CGPointMake(20 + 36/2.0, self.view.bounds.size.height - 36/2.0 - 10);
+    heart.center = fountainSource;
+    [heart animateInView:self.view];
 }
 
 
