@@ -10,7 +10,8 @@
 
 @interface EmitterView : UIImageView
 
-- (instancetype)initWithDefaultImage:(UIImage *)defaultImage iconImage:(UIImage *)icon;
-- (void)animateInView:(UIView *)view;
+- (instancetype)initWithDefaultImage:(UIImage *)defaultImage
+                           iconImage:(UIImage *)icon;
 
+- (void)animateInView:(UIView *)view;
 @end
