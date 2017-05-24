@@ -27,8 +27,7 @@
 - (void)showEmitterView
 {
     EmitterView* heart = [[EmitterView alloc] initWithDefaultImage:[UIImage imageNamed:@"like"]
-                                                         iconImage:[UIImage imageNamed:@"love"]
-                                                            colors:nil];
+                                                         iconImage:[UIImage imageNamed:@"love"]];
     heart.frame = CGRectMake(0, 0, 36, 36);
     [self.view addSubview:heart];
     CGPoint fountainSource = CGPointMake(20 + 36/2.0, self.view.bounds.size.height - 36/2.0 - 10);

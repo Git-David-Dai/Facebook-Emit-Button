@@ -17,6 +17,7 @@
 
 @property (nonatomic,weak)   UIView  *inView;
 @property (nonatomic,assign) CGPoint emitterEndPoint;
+@property (nonatomic,assign) CGRect  originalFrame;
 @end
 
 @implementation EmitterView
@@ -33,36 +34,39 @@
 
 - (void)animateInView:(UIView *)view
 {
-    self.transform = CGAffineTransformMakeScale(0, 0);
-    self.alpha = 0;
-    
     self.image = (self.iconImage) ? self.iconImage : self.defaultImage;
+    self.originalFrame = self.frame;
     
-    //心跳回弹效果
-    [UIView animateWithDuration:1
-                          delay:0.0
-         usingSpringWithDamping:0.5
-          initialSpringVelocity:0.1
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-        self.transform = CGAffineTransformIdentity;
-        self.alpha = 0.9;
-    } completion:NULL];
-
+    //从小变大然后回弹效果
+    self.alpha = 0;
+    self.transform = CGAffineTransformMakeScale(0.3, 0.3);
+    [UIView animateWithDuration:0.5 animations:^{
+        self.alpha = 1;
+    }completion:^(BOOL finished){
+        [self lineDismissAnimation];
+        
+        [UIView animateWithDuration:0.5 delay:0.0
+             usingSpringWithDamping:0.2
+              initialSpringVelocity:10
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             self.transform = CGAffineTransformIdentity;
+                         }completion:^(BOOL finished) {
+                             self.image = self.defaultImage;
+                         }];
+    }];
+    
     [self emitterAnimation:view];
 }
 
+#pragma mark - Animations
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    if([self.layer animationForKey:kEmitterAnimationKey] == anim)
-    {
-        [self lineDismissAnimation];
+    if([self.layer animationForKey:kEmitterAnimationKey] == anim){
         [self floatingAnimation:self.inView starPoint:self.emitterEndPoint];
-        self.image = self.defaultImage;
     }
 }
 
-#pragma mark - Animations
 - (void)emitterAnimation:(UIView *)view
 {
     NSTimeInterval totalAnimationDuration = 1.5;
@@ -100,10 +104,10 @@
     
     CGFloat perAngle = 2 * M_PI / 10;
     
-    CGPoint centerPoint = CGPointMake(self.frame.size.width / 2, self.frame.size.width / 2);
+    CGPoint centerPoint = CGPointMake(self.originalFrame.size.width / 2, self.originalFrame.size.width / 2);
     CGPoint startPoint  = centerPoint;
     CGPoint endPoint    = CGPointMake(0, 0);
-    CGFloat radius      = self.frame.size.width;
+    CGFloat radius      = self.originalFrame.size.width;
     for (int i = 0; i< 10; i++)
     {
         CGFloat startAngel = perAngle * i;
