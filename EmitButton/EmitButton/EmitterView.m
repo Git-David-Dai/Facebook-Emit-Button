@@ -7,6 +7,7 @@
 //
 
 #import "EmitterView.h"
+#import "Masonry.h"
 
 #define kEmitterAnimationKey  @"emitterPositionAnimation"
 #define kFloatingAnimationKey @"floatingPositionAnimation"
@@ -14,6 +15,8 @@
 @interface EmitterView()<CAAnimationDelegate>
 @property (nonatomic,strong) UIImage *defaultImage;
 @property (nonatomic,strong) UIImage *iconImage;
+@property (nonatomic,strong) UIImageView *imageView;
+
 
 @property (nonatomic,weak)   UIView  *inView;
 @property (nonatomic,assign) CGPoint emitterEndPoint;
@@ -25,16 +28,22 @@
 - (instancetype)initWithDefaultImage:(UIImage *)defaultImage
                            iconImage:(UIImage *)icon
 {
-    if(self = [super initWithImage:defaultImage]){
+    if(self = [super init]){
         self.defaultImage = defaultImage;
         self.iconImage = icon;
+        
+        self.imageView = [[UIImageView alloc]init];
+        [self addSubview:self.imageView];
     }
     return self;
 }
 
 - (void)animateInView:(UIView *)view
 {
-    self.image = (self.iconImage) ? self.iconImage : self.defaultImage;
+    self.imageView.image = (self.iconImage) ? self.iconImage : self.defaultImage;
+    self.imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self.imageView.layer.cornerRadius  = self.imageView.frame.size.height / 2.0;
+    self.imageView.clipsToBounds = YES;
     self.originalFrame = self.frame;
     
     //从小变大然后回弹效果
@@ -45,14 +54,16 @@
     }completion:^(BOOL finished){
         [self lineDismissAnimation];
         
-        [UIView animateWithDuration:0.5 delay:0.0
-             usingSpringWithDamping:0.2
+        [UIView animateWithDuration:0.8 delay:0.0
+             usingSpringWithDamping:0.25
               initialSpringVelocity:10
                             options:UIViewAnimationOptionCurveEaseOut
                          animations:^{
                              self.transform = CGAffineTransformIdentity;
+                             self.imageView.transform = CGAffineTransformIdentity;
                          }completion:^(BOOL finished) {
-                             self.image = self.defaultImage;
+                             self.imageView.image = self.defaultImage;
+                             [self floatingAnimation:self.inView starPoint:self.emitterEndPoint];
                          }];
     }];
     
@@ -60,13 +71,6 @@
 }
 
 #pragma mark - Animations
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if([self.layer animationForKey:kEmitterAnimationKey] == anim){
-        [self floatingAnimation:self.inView starPoint:self.emitterEndPoint];
-    }
-}
-
 - (void)emitterAnimation:(UIView *)view
 {
     NSTimeInterval totalAnimationDuration = 1.5;
@@ -93,14 +97,13 @@
     emitterAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
     emitterAnimation.duration       = totalAnimationDuration;
     emitterAnimation.delegate       = self;
-    emitterAnimation.removedOnCompletion = NO;
     [self.layer addAnimation:emitterAnimation forKey:kEmitterAnimationKey];
     
 }
 
 - (void)lineDismissAnimation
 {
-    CGFloat totalAnimationDuration = 0.4;
+    CGFloat totalAnimationDuration = 0.25;
     
     CGFloat perAngle = 2 * M_PI / 10;
     
@@ -112,8 +115,8 @@
     {
         CGFloat startAngel = perAngle * i;
     
-        startPoint.x = centerPoint.x + radius * cosf(startAngel) * 0.7;
-        startPoint.y = centerPoint.y + radius * sinf(startAngel) * 0.7;
+        startPoint.x = centerPoint.x + radius * cosf(startAngel) * 0.5;
+        startPoint.y = centerPoint.y + radius * sinf(startAngel) * 0.5;
         
         endPoint.x = centerPoint.x + radius * cosf(startAngel);
         endPoint.y = centerPoint.y + radius * sinf(startAngel);

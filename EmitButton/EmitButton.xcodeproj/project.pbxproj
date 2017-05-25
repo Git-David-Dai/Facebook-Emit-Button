@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C6899B718C6103C08E4E0BE /* libPods-EmitButtonUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCE30B26DA263844F325767 /* libPods-EmitButtonUITests.a */; };
 		630387E81ED3FB9B00C9631B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 630387E71ED3FB9B00C9631B /* main.m */; };
 		630387EB1ED3FB9B00C9631B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 630387EA1ED3FB9B00C9631B /* AppDelegate.m */; };
 		630387EE1ED3FB9B00C9631B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 630387ED1ED3FB9B00C9631B /* ViewController.m */; };
@@ -16,6 +17,8 @@
 		630388011ED3FB9C00C9631B /* EmitButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 630388001ED3FB9C00C9631B /* EmitButtonTests.m */; };
 		6303880C1ED3FB9C00C9631B /* EmitButtonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6303880B1ED3FB9C00C9631B /* EmitButtonUITests.m */; };
 		6303881E1ED4067500C9631B /* EmitterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6303881D1ED4067500C9631B /* EmitterView.m */; };
+		E4B06DE4641A29751CC3ED93 /* libPods-EmitButton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA5611427F5D7BB2F70B9AB /* libPods-EmitButton.a */; };
+		EDFAF98597A7B4EC980C1E29 /* libPods-EmitButtonTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAB008771AC602F7480BBD8 /* libPods-EmitButtonTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1204A3C6F5E21FA8445DD4E6 /* Pods-EmitButtonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmitButtonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EmitButtonTests/Pods-EmitButtonTests.release.xcconfig"; sourceTree = "<group>"; };
+		1FAB008771AC602F7480BBD8 /* libPods-EmitButtonTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EmitButtonTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3462EA60347AD71B224D1D62 /* Pods-EmitButtonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmitButtonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EmitButtonUITests/Pods-EmitButtonUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4028EB59E2025831DEBD4377 /* Pods-EmitButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmitButton.release.xcconfig"; path = "Pods/Target Support Files/Pods-EmitButton/Pods-EmitButton.release.xcconfig"; sourceTree = "<group>"; };
 		630387E31ED3FB9B00C9631B /* EmitButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmitButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		630387E71ED3FB9B00C9631B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		630387E91ED3FB9B00C9631B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +61,11 @@
 		6303880D1ED3FB9C00C9631B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6303881C1ED4067500C9631B /* EmitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmitterView.h; sourceTree = "<group>"; };
 		6303881D1ED4067500C9631B /* EmitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmitterView.m; sourceTree = "<group>"; };
+		8FCE30B26DA263844F325767 /* libPods-EmitButtonUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EmitButtonUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0D096102ACEC34B91BAD57 /* Pods-EmitButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmitButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EmitButton/Pods-EmitButton.debug.xcconfig"; sourceTree = "<group>"; };
+		A572A4F4625BD309B6EAA4B1 /* Pods-EmitButtonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmitButtonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EmitButtonUITests/Pods-EmitButtonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C48B88948CF8774F3FEB8F4E /* Pods-EmitButtonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmitButtonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EmitButtonTests/Pods-EmitButtonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ECA5611427F5D7BB2F70B9AB /* libPods-EmitButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EmitButton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4B06DE4641A29751CC3ED93 /* libPods-EmitButton.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFAF98597A7B4EC980C1E29 /* libPods-EmitButtonTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6899B718C6103C08E4E0BE /* libPods-EmitButtonUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +103,8 @@
 				630387FF1ED3FB9C00C9631B /* EmitButtonTests */,
 				6303880A1ED3FB9C00C9631B /* EmitButtonUITests */,
 				630387E41ED3FB9B00C9631B /* Products */,
+				C45DD08D456E9949050A1E41 /* Pods */,
+				ED24DEE5DDB4A953F9EBBB1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +162,29 @@
 			path = EmitButtonUITests;
 			sourceTree = "<group>";
 		};
+		C45DD08D456E9949050A1E41 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E0D096102ACEC34B91BAD57 /* Pods-EmitButton.debug.xcconfig */,
+				4028EB59E2025831DEBD4377 /* Pods-EmitButton.release.xcconfig */,
+				C48B88948CF8774F3FEB8F4E /* Pods-EmitButtonTests.debug.xcconfig */,
+				1204A3C6F5E21FA8445DD4E6 /* Pods-EmitButtonTests.release.xcconfig */,
+				3462EA60347AD71B224D1D62 /* Pods-EmitButtonUITests.debug.xcconfig */,
+				A572A4F4625BD309B6EAA4B1 /* Pods-EmitButtonUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ED24DEE5DDB4A953F9EBBB1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECA5611427F5D7BB2F70B9AB /* libPods-EmitButton.a */,
+				1FAB008771AC602F7480BBD8 /* libPods-EmitButtonTests.a */,
+				8FCE30B26DA263844F325767 /* libPods-EmitButtonUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 630388101ED3FB9C00C9631B /* Build configuration list for PBXNativeTarget "EmitButton" */;
 			buildPhases = (
+				C0C878E39A37E57728CB86D6 /* [CP] Check Pods Manifest.lock */,
 				630387DF1ED3FB9B00C9631B /* Sources */,
 				630387E01ED3FB9B00C9631B /* Frameworks */,
 				630387E11ED3FB9B00C9631B /* Resources */,
+				0EE5432D7DBA0C851D28A70B /* [CP] Embed Pods Frameworks */,
+				41036F0F34DEB47BE7957748 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,9 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 630388131ED3FB9C00C9631B /* Build configuration list for PBXNativeTarget "EmitButtonTests" */;
 			buildPhases = (
+				88B83F4E77DA825C7EEEBABF /* [CP] Check Pods Manifest.lock */,
 				630387F81ED3FB9C00C9631B /* Sources */,
 				630387F91ED3FB9C00C9631B /* Frameworks */,
 				630387FA1ED3FB9C00C9631B /* Resources */,
+				5235EF97C5E1171D3E18697E /* [CP] Embed Pods Frameworks */,
+				E5FA32012443C3820D93348C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 630388161ED3FB9C00C9631B /* Build configuration list for PBXNativeTarget "EmitButtonUITests" */;
 			buildPhases = (
+				D8F1F04B781BD12A4CBED5B2 /* [CP] Check Pods Manifest.lock */,
 				630388031ED3FB9C00C9631B /* Sources */,
 				630388041ED3FB9C00C9631B /* Frameworks */,
 				630388051ED3FB9C00C9631B /* Resources */,
+				7EFCC9EE9600129D3636357B /* [CP] Embed Pods Frameworks */,
+				C94316E185FD4FEB9E22DE15 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,6 +321,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EE5432D7DBA0C851D28A70B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmitButton/Pods-EmitButton-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41036F0F34DEB47BE7957748 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmitButton/Pods-EmitButton-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5235EF97C5E1171D3E18697E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmitButtonTests/Pods-EmitButtonTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EFCC9EE9600129D3636357B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmitButtonUITests/Pods-EmitButtonUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88B83F4E77DA825C7EEEBABF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C0C878E39A37E57728CB86D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C94316E185FD4FEB9E22DE15 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmitButtonUITests/Pods-EmitButtonUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8F1F04B781BD12A4CBED5B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E5FA32012443C3820D93348C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EmitButtonTests/Pods-EmitButtonTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		630387DF1ED3FB9B00C9631B /* Sources */ = {
@@ -428,6 +615,7 @@
 		};
 		630388111ED3FB9C00C9631B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E0D096102ACEC34B91BAD57 /* Pods-EmitButton.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EmitButton/Info.plist;
@@ -439,6 +627,7 @@
 		};
 		630388121ED3FB9C00C9631B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4028EB59E2025831DEBD4377 /* Pods-EmitButton.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EmitButton/Info.plist;
@@ -450,6 +639,7 @@
 		};
 		630388141ED3FB9C00C9631B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C48B88948CF8774F3FEB8F4E /* Pods-EmitButtonTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EmitButtonTests/Info.plist;
@@ -462,6 +652,7 @@
 		};
 		630388151ED3FB9C00C9631B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1204A3C6F5E21FA8445DD4E6 /* Pods-EmitButtonTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EmitButtonTests/Info.plist;
@@ -474,6 +665,7 @@
 		};
 		630388171ED3FB9C00C9631B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3462EA60347AD71B224D1D62 /* Pods-EmitButtonUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = EmitButtonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -485,6 +677,7 @@
 		};
 		630388181ED3FB9C00C9631B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A572A4F4625BD309B6EAA4B1 /* Pods-EmitButtonUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = EmitButtonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EmitterView : UIImageView
+@interface EmitterView : UIView
 
 - (instancetype)initWithDefaultImage:(UIImage *)defaultImage
                            iconImage:(UIImage *)icon;
