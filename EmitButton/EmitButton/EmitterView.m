@@ -96,7 +96,6 @@
     emitterAnimation.path           = path.CGPath;
     emitterAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
     emitterAnimation.duration       = totalAnimationDuration;
-    emitterAnimation.delegate       = self;
     [self.layer addAnimation:emitterAnimation forKey:kEmitterAnimationKey];
     
 }
@@ -178,26 +177,28 @@
 //    CGPoint controlPoint2 = CGPointMake(viewCenterX - 2*xDelta, yDelta);
     
     //横向移动
+    BOOL isDirectToRight = YES;
     CGFloat viewWidth = CGRectGetWidth(view.bounds);
-    NSInteger travelDirection = 1;
-    CGPoint endPoint = CGPointMake(starPoint.x + viewWidth, starPoint.y);
-    CGFloat xDelta = ([self getRandomNumber:viewWidth/2 to:viewWidth]) * travelDirection;
-    CGFloat yDelta = [self getRandomNumber:starPoint.y + 30 to:starPoint.y + 130];
-    CGPoint controlPoint1 = CGPointMake(xDelta , yDelta);
-    CGPoint controlPoint2 = CGPointMake(xDelta * 2, 0.9 * yDelta);
+    CGPoint endPoint  = CGPointMake(viewWidth, starPoint.y + 10);
+    CGFloat control1X = [self getRandomNumber:viewWidth / 5.0  to:viewWidth / 4.0];
+    CGFloat control1Y = [self getRandomNumber:starPoint.y - 70 to:starPoint.y - 30];
+    
+    CGFloat control2X = [self getRandomNumber:viewWidth / 2    to:viewWidth / 3 * 2];
+    CGFloat control2Y = [self getRandomNumber:starPoint.y + 30 to:starPoint.y + 70];
     
     [travelPath addCurveToPoint:endPoint
-                  controlPoint1:controlPoint1
-                  controlPoint2:controlPoint2];
+                  controlPoint1:isDirectToRight ? CGPointMake(control1X, control1Y) : CGPointMake(control2X, control1Y)
+                  controlPoint2:isDirectToRight ? CGPointMake(control2X, control2Y) : CGPointMake(control1X, control2Y)];
     
     CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     keyFrameAnimation.path = travelPath.CGPath;
     keyFrameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    keyFrameAnimation.duration = totalAnimationDuration + endPoint.x/viewWidth;
+    keyFrameAnimation.duration = totalAnimationDuration;
     [self.layer addAnimation:keyFrameAnimation forKey:kFloatingAnimationKey];
     
     [UIView animateWithDuration:totalAnimationDuration animations:^{
-        self.alpha = 0.0;
+        self.alpha = 0.5;
+        self.transform = CGAffineTransformMakeScale(0.5, 0.5);
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
